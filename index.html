@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>digital diary</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.0/quill.snow.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.0/quill.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- lock screen -->
+     <div id="lockscreen">
+        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+        <h1>Digital Diary </h1>
+        <p> entrer your pasword to continue </p>
+        <div class="lock-input-group">
+            <input type="password" id="lockinput" placeholder="Enter password" maxlength="20" autofocus/>
+
+            <button id="unlockbtn"><i class="fas fa-arrow-right"></i>unlock</button>
+        </div>
+        <div class="lock-error" id="error"></div> 
+     </div> 
+      <!-- Main app -->
+        <div id="app" style="display:none;" >
+        <!-- header -->
+         <div class="app-header">
+            <div class="brand"><i class="fas fa-book-open"></i>my Diary</div>
+            <div class="header-action">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search entries..."/>
+                </div> 
+                <button class="theme-btn" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <button id="lockBtn"><i class="fas fa-lock"></i><span>lock</span></button>
+            </div>
+         </div>
+         <!-- Main Grid-->
+         <div class="diary-grid">
+            <!-- CALANDER -->
+             <div class="calendar-card">
+                <div class="calendar-header">
+                       <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                       <h3 id="calMonthYear">january 2026</h3>
+                       <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+
+                <div class="calendar-grid" id="calendarGrid"></div>
+                <div style="margin-top:14px; font-size:13px; color: var(--text-secondary); text-align: center;">
+                    <span style="display:inline-block; width: 10px; height: 10px; border-radius: 10px; background: var(--accent); margin-right: 6px;" ></span> has entry
+                </div>
+             </div>
+             <!-- Entries -->
+              <div class="entries-section">
+
+                <!-- MOOD Tracker -->
+                 <div class="mood-tracker">
+                    <span class="mood-label"><i class="fas fa-smile"></i>mood</span>
+                    <div class="mood-options" id="moodOptions">
+                        <button data-mood="😭" title="sad">😭</button>
+                        <button data-mood="🤩" title="excited">🤩</button>
+                        <button data-mood="😗" title="normal">😗</button>
+                        <button data-mood="😡" title="angry">😡</button>
+                        <button data-mood="😴" title="sleepy">😴</button>
+                        <button data-mood="🥹" title="feel cute">🥹</button>
+                    </div>
+
+                    <span class="selected-mood-text" id="selectedMoodText">None</span>
+                 </div>
+                 <!-- text Editor-->
+                  <div class="editor-wrapper">
+                    <div id="editor-container"></div>
+                    <div class="editor-actions">
+                        <button class="btn-delete" id="deleteEntryBtn"><i class="fas fa-trash-alt"></i>Delete</button>
+                        <button class="btn-save" id="saveEntryBtn"><i class="fas fa-save"></i>Save</button>
+                    </div>
+                 </div>
+                 <!-- Entries list -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                    <h4 style="font-weight: 600; font-size: 16px;"><i class="fas fa-list-ul" style="color: var(--accent);"></i>Recent Entries</h4>
+                    <span style="font-size: 13px; color: var(--text-secondary);" id="entryCount">0 entries</span>
+                    </div>  
+                    <div class="entries-list" id="entriesList">
+                    <div class="no-entries">no entries yet. Write your first diary entry!</div>
+                    </div>
+             </div>
+         </div>
+     </div>
+    <script src="script.js"></script>
+</body> 
+</html> 
